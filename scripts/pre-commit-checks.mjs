@@ -33,10 +33,13 @@ run(
     "apps/web/**/*.{ts,tsx,json}",
     "packages/**/*.{ts,tsx,json}",
     "scripts/**/*.mjs",
+    "eslint.config.mjs",
     "mprocs.yaml",
   ],
   "format check",
 );
+
+run(node, [resolve("node_modules/eslint/bin/eslint.js"), "."], "ESLint check");
 
 run(
   node,
