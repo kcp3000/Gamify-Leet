@@ -21,10 +21,9 @@
     "noUncheckedSideEffectImports": true,
     "esModuleInterop": true,
     "paths": {
-      "@repo/shared": ["../../../../packages/shared/src"]
+      "@repo/shared": ["../../../packages/shared/src"]
     },
     "baseUrl": "."
   },
   "include": ["src"],
-  "references": [{ "path": "../../../packages/shared" }]
 }

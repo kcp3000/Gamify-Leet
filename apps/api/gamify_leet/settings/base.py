@@ -4,16 +4,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[2]
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-me')
+SECRET_KEY = os.getenv('SECRET_KEY') or 'dev-secret-key-change-me'
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.auth',
     'rest_framework',
     'corsheaders',
-    'apps.auth',
+    'apps.auth.apps.AuthConfig',
     'apps.issues',
     'apps.gamification',
 ]
@@ -45,11 +45,11 @@ CORS_ALLOWED_ORIGINS = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_turso',
-        'NAME': os.getenv('DATABASE_URL', 'file:db/dev.db'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db' / 'dev.sqlite3',
     }
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'accounts.User'
