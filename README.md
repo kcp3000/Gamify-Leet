@@ -2,17 +2,16 @@
 
 Gamify your LeetCode experience.
 
-## Local development on Windows
+## Local development
 
-The current workflow runs the React frontend and Django API directly on Windows. Local Django development uses SQLite. Docker is not required.
+The current workflow runs the React frontend and Django API directly on the host operating system. It supports Windows, macOS, and Linux. Local Django development uses SQLite. Docker is not required.
 
 ### Prerequisites
 
 - Git
 - Node.js 20 or newer
 - Python 3.11 or newer
-- PowerShell
-- WinGet
+- A terminal
 
 mprocs is a separate terminal application used to display and control the frontend and backend processes.
 
@@ -49,6 +48,8 @@ Keep secrets in `.env`; never commit them. The current Django development setup 
 
 ### 4. Create and configure the API environment
 
+Windows PowerShell:
+
 ```powershell
 py -m venv apps/api/.venv
 .\apps\api\.venv\Scripts\Activate.ps1
@@ -56,7 +57,16 @@ python -m pip install --upgrade pip
 python -m pip install -r apps/api/requirements.txt
 ```
 
-If PowerShell blocks activation, run this once and activate again:
+macOS/Linux:
+
+```bash
+python3 -m venv apps/api/.venv
+source apps/api/.venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r apps/api/requirements.txt
+```
+
+If Windows PowerShell blocks activation, run this once and activate again:
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
@@ -74,13 +84,15 @@ The local database is `apps/api/db/dev.sqlite3`. It is ignored by Git.
 
 ### 6. Install mprocs
 
+Windows:
+
 ```powershell
 winget install --id pvolok.mprocs --exact
 ```
 
-Close and reopen PowerShell after installation, then verify:
+macOS/Linux users should install mprocs through their preferred package manager or the official release binary. Verify it is available with:
 
-```powershell
+```text
 mprocs --version
 ```
 
@@ -119,9 +131,9 @@ pnpm --filter gamify-leet-web build
 
 ### Troubleshooting
 
-If `mprocs` is not recognized after installation, close the terminal completely and open a new PowerShell session. Existing terminals keep the old `PATH`.
+If `mprocs` is not recognized after installation, restart the terminal so its `PATH` is refreshed.
 
-If Django reports `No module named 'django'`, ensure `apps/api/.venv` exists and reinstall the API requirements from step 4. The `dev:api` script uses the project virtual environment directly.
+If Django reports `No module named 'django'`, ensure `apps/api/.venv` exists and reinstall the API requirements from step 4. The `dev:api` script automatically selects the platform-specific Python executable inside that environment.
 
 If mprocs reports `unknown variant 'stop-proc'`, update the checkout:
 
