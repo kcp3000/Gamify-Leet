@@ -46,6 +46,8 @@ pnpm run setup:hooks
 
 The hook validates manually created commit messages using the repository’s Conventional Commit format. It checks the commit type, optional scope, summary length, and trailing punctuation.
 
+Before each commit, a fast validation hook also checks formatting, frontend TypeScript, and Django configuration. Full production builds and broader tests remain appropriate for push/PR validation.
+
 ### 3. Create the local environment file
 
 ```powershell
