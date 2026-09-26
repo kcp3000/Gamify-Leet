@@ -6,7 +6,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo dev",
+    "dev": "pnpm run dev:tui",
+    "dev:api": "python apps/api/manage.py runserver 8000",
+    "dev:web": "pnpm --filter gamify-leet-web dev",
+    "dev:tui": "mprocs",
     "build": "turbo build",
     "test": "turbo test",
     "lint": "turbo lint",
