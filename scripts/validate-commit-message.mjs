@@ -7,11 +7,10 @@ if (!messagePath) {
   process.exit(1);
 }
 
-const firstLine = readFileSync(messagePath, "utf8")
-  .split(/\r?\n/, 1)[0]
-  .trim();
+const firstLine = readFileSync(messagePath, "utf8").split(/\r?\n/, 1)[0].trim();
 
-const conventionalCommitPattern = /^(feat|fix|docs|refactor|test|chore)(\([a-z0-9][a-z0-9._/-]*\))?: (.+)$/;
+const conventionalCommitPattern =
+  /^(feat|fix|docs|refactor|test|chore)(\([a-z0-9][a-z0-9._/-]*\))?: (.+)$/;
 const match = firstLine.match(conventionalCommitPattern);
 
 if (!match) {

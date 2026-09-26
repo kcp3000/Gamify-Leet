@@ -3,9 +3,10 @@ import { resolve } from "node:path";
 import { spawn } from "node:child_process";
 
 const rootDir = resolve(import.meta.dirname, "..");
-const pythonCandidates = process.platform === "win32"
-  ? ["apps/api/.venv/Scripts/python.exe", "apps/api/.venv/Scripts/python"]
-  : ["apps/api/.venv/bin/python"];
+const pythonCandidates =
+  process.platform === "win32"
+    ? ["apps/api/.venv/Scripts/python.exe", "apps/api/.venv/Scripts/python"]
+    : ["apps/api/.venv/bin/python"];
 
 const pythonPath = pythonCandidates
   .map((candidate) => resolve(rootDir, candidate))
