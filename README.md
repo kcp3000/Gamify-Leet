@@ -38,6 +38,14 @@ corepack prepare pnpm@9.15.0 --activate
 pnpm install
 ```
 
+Enable the repository commit hook:
+
+```powershell
+pnpm run setup:hooks
+```
+
+The hook validates manually created commit messages using the repository’s Conventional Commit format. It checks the commit type, optional scope, summary length, and trailing punctuation.
+
 ### 3. Create the local environment file
 
 ```powershell
@@ -144,3 +152,21 @@ git pull --ff-only
 The current configuration uses the supported `kill-proc` command.
 
 The correct dependency command is `pnpm install`, not `pnpm intsall`.
+
+### Commit message format
+
+Use:
+
+```text
+<type>(<scope>): <summary>
+```
+
+Allowed types are `feat`, `fix`, `docs`, `refactor`, `test`, and `chore`. Summaries must be 72 characters or fewer and must not end with a period.
+
+Examples:
+
+```text
+feat(web): add issue filters
+fix(api): handle expired sessions
+docs(readme): clarify local setup
+```

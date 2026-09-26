@@ -10,6 +10,7 @@
     "dev:api": "node scripts/run-api.mjs",
     "dev:web": "pnpm --filter gamify-leet-web dev",
     "dev:tui": "mprocs",
+    "setup:hooks": "node scripts/setup-githooks.mjs",
     "build": "turbo build",
     "test": "turbo test",
     "lint": "turbo lint",
