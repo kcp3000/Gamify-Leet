@@ -16,8 +16,8 @@ export function useGamification() {
   });
 
   return {
-    points: points ?? { total: 0, level: 1 },
-    streak: streak ?? { current: 0, longest: 0 },
+    points: points ?? { total: 0, level: 1, breakdown: {} },
+    streak: streak ?? { current: 0, longest: 0, lastActive: "" },
     isLoading,
   };
 }

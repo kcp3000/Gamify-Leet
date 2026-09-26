@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface DialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;

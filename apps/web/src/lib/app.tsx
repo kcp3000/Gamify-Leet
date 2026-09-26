@@ -1,18 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { RouterProvider } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { HomePage } from "../pages/layout";
 
 const queryClient = new QueryClient();
-const Router = lazy(() => import("../pages"));
-
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Router />
-        </Suspense>
+        <Routes>
+          <Route path="*" element={<HomePage />} />
+        </Routes>
       </BrowserRouter>
     </QueryClientProvider>
   );
