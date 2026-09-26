@@ -8,5 +8,5 @@ procs:
 
 keymap_procs:
   <r>: { c: restart-proc }
-  <x>: { c: stop-proc }
+  <x>: { c: kill-proc }
   <q>: { c: quit }
