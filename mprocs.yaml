@@ -7,6 +7,6 @@ procs:
     stop: SIGINT
 
 keymap_procs:
-  r: { c: restart-proc }
-  x: { c: stop-proc }
-  q: { c: quit }
+  <r>: { c: restart-proc }
+  <x>: { c: stop-proc }
+  <q>: { c: quit }
